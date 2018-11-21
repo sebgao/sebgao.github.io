@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:200,700');
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:300, 500');
-@import url('https://fonts.googleapis.com/css?family=Interstate:300,700');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
+@import url('https://fonts.googleapis.com/css?family=Interstate:400,500,600');
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
 audio:not([controls]){display:none;}
@@ -23,7 +23,7 @@ textarea{overflow:auto;vertical-align:top;}
 .clearfix:after{clear:both;}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
 .input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-body{margin:0;font-family:"Work Sans","Times New Roman",Times,serif;font-size:14px; font-weight:lighter;line-height:20px;color:#5c5c5c;background-color:#ffffff;}
+body{margin:0;font-family:"Work Sans","Times New Roman",Times,serif;font-size:14px; font-weight:400;line-height:20px;color:#5c5c5c;background-color:#ffffff;}
 a{color:#666666;text-decoration:none;}
 a:hover{color:#111111;text-decoration:underline;}
 .img-rounded{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}

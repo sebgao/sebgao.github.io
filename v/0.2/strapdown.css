@@ -1,8 +1,5 @@
-
 /*******************************************************************
-
 This chunk is to fix Bootstrap so that the Markdown output looks good
-
 *******************************************************************/
 
 body {
@@ -37,10 +34,8 @@ img {
 }
 
 /*******************************************************************
-
 This chunk is for Google's Code Prettify:
 http://google-code-prettify.googlecode.com
-
 *******************************************************************/
 
 
@@ -96,4 +91,3 @@ li.L3,
 li.L5,
 li.L7,
 li.L9 { background: #eee }
-

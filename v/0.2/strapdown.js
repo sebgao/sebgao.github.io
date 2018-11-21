@@ -1,4 +1,12 @@
 /**
+ * StrapDown.js - an on-the-fly markdown parser
+ * Copyright (C) 2016, Lilian Besson. (GPLv3 Licensed)
+ * //lbesson.bitbucket.io/md/
+ * https://GitHub.com/Naereen/StrapDown.js
+ * Version: 0.8
+ */
+
+/**
  * marked - a markdown parser
  * Copyright (c) 2011-2013, Christopher Jeffrey. (MIT Licensed)
  * https://github.com/chjj/marked
@@ -309,7 +317,7 @@ doWork();}
 var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':registerLangHandler,'sourceDecorator':sourceDecorator,'PR_ATTRIB_NAME':PR_ATTRIB_NAME,'PR_ATTRIB_VALUE':PR_ATTRIB_VALUE,'PR_COMMENT':PR_COMMENT,'PR_DECLARATION':PR_DECLARATION,'PR_KEYWORD':PR_KEYWORD,'PR_LITERAL':PR_LITERAL,'PR_NOCODE':PR_NOCODE,'PR_PLAIN':PR_PLAIN,'PR_PUNCTUATION':PR_PUNCTUATION,'PR_SOURCE':PR_SOURCE,'PR_STRING':PR_STRING,'PR_TAG':PR_TAG,'PR_TYPE':PR_TYPE,'prettyPrintOne':win['prettyPrintOne']=prettyPrintOne,'prettyPrint':win['prettyPrint']=prettyPrint};if(typeof define==="function"&&define['amd']){define("google-code-prettify",[],function(){return PR;});}})();
 ;(function(window, document) {
 
-  // Hide body until we're done fiddling with the DOM
+  // Hide body until we're done fiddling with the DOM (FIXED")
   document.body.style.display = 'none';
 
   //////////////////////////////////////////////////////////////////////
@@ -338,7 +346,7 @@ var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':re
   // Get user elements we need
   //
 
-  var markdownEl = document.getElementsByTagName('xmp')[0] || document.getElementsByTagName('textarea')[0],
+  var markdownEl = document.getElementsByTagName('xmp')[0] || document.getElementsByTagName('pre')[0] || document.getElementsByTagName('textarea')[0],
       titleEl = document.getElementsByTagName('title')[0],
       scriptEls = document.getElementsByTagName('script'),
       navbarEl = document.getElementsByClassName('navbar')[0];
@@ -366,25 +374,67 @@ var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':re
   }
   var originBase = origin.substr(0, origin.lastIndexOf('/'));
 
+  // origin = https://0.0.0.0/s/md/strapdown.js?src=source.html&mathjax=y&beacon=y&theme=cyborg is the complete address
+
+    function searchURL(myURL) { // Source: http://www.abeautifulsite.net/parsing-urls-in-javascript/
+        var parserForURL = document.createElement('a'),
+            searchObject = {},
+            queries, split, i;
+
+        // Let the browser do the work
+        parserForURL.href = myURL;
+
+        // Convert query string to object
+        // queries = parserForURL.search.replace(/^?/, '').split('&');
+        // queries = parserForURL.search.split('&');
+        queries = parserForURL.search.replace('?', '&').split('&');
+        for( i = 0; i < queries.length; i++ ) {
+            split = queries[i].split('=');
+            if (split[0]) {
+                searchObject[split[0]] = (split[1] || '');
+            }
+        }
+        return searchObject;
+    }
+
+  // var URIparser = new URL(origin);
+  // console.log("[strapdown.js] [INFO] search parameter (with new URL(..) trick) = " + URIparser.search);
+  var queryOrigin = searchURL(origin);
+  console.log(queryOrigin);
+  console.log("[strapdown.js] [INFO] search the URI for src = " + queryOrigin["src"]);
+
   // Get theme
-  var theme = markdownEl.getAttribute('theme') || 'bootstrap';
+  var theme = markdownEl.getAttribute('theme') || queryOrigin['theme'] || 'united';
   theme = theme.toLowerCase();
 
-  // Stylesheets
+  console.log("[strapdown.js] [INFO] Parser and lexer well imported. Origin = " + origin + "\n Theme = " + theme);
+
+  // Stylesheets (around 128164 bytes in total, 128 Ko)
   var linkEl = document.createElement('link');
+  linkEl.rel = 'stylesheet';
   linkEl.href = originBase + '/themes/'+theme+'.min.css';
-  linkEl.rel = 'stylesheet';
   document.head.appendChild(linkEl);
 
   var linkEl = document.createElement('link');
+  linkEl.rel = 'stylesheet';
   linkEl.href = originBase + '/strapdown.css';
-  linkEl.rel = 'stylesheet';
   document.head.appendChild(linkEl);
 
   var linkEl = document.createElement('link');
-  linkEl.href = originBase + '/themes/bootstrap-responsive.min.css';
   linkEl.rel = 'stylesheet';
+  linkEl.href = originBase + '/themes/bootstrap-responsive.min.css';
   document.head.appendChild(linkEl);
+
+  // Favicon (730 bytes for 'favicon.png')
+  if (queryOrigin['keepicon']) {
+    // Do not add a favicon, if strapdown.js was loaded with a URL query containing "&keepicon=y" somewhere.
+    console.log("[strapdown.js] [INFO] Keeping the default favicon (not replacing with originBase/favicon.png ...");
+  } else {
+    var linkEl = document.createElement('link');
+    linkEl.rel = 'shortcut icon';
+    linkEl.href = originBase + '/favicon.png';
+    document.head.appendChild(linkEl);
+  }
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -396,9 +446,9 @@ var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':re
   var newNode = document.createElement('div');
   newNode.className = 'container';
   newNode.id = 'content';
-  document.body.replaceChild(newNode, markdownEl);
+  markdownEl.parentNode.replaceChild(newNode, markdownEl) || document.body.replaceChild(newNode, markdownEl);
 
-  // Insert navbar if there's none
+  // Insert navbar if there's none // FIXED be sure this is good: OK
   var newNode = document.createElement('div');
   newNode.className = 'navbar navbar-fixed-top';
   if (!navbarEl && titleEl) {
@@ -414,7 +464,15 @@ var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':re
   //
   // Markdown!
   //
-
+  // Option for marked (Markdown parser)
+  marked.setOptions({
+    // renderer: new marked.Renderer(),
+    gfm: true,  // Type: boolean Default: true. Enable [GitHub flavored markdown](https://help.github.com/articles/github-flavored-markdown).
+    tables: true, // Type: boolean Default: true. Enable GFM tables. This option requires the gfm option to be true.
+    smartypants: true,
+    pedantic: (queryOrigin['pedantic'] || false)
+    // See https://github.com/chuckhoupt/strapdown/commit/1a090729fb717059be0689aa65025de6de67b3cd
+  });
   // Generate Markdown
   var html = marked(markdown);
   document.getElementById('content').innerHTML = html;
@@ -438,5 +496,29 @@ var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':re
   // All done - show body
   document.body.style.display = '';
 
-})(window, document);
+  // MathJax configuration (https://docs.mathjax.org/en/latest/configuration.html#configuring-mathjax-after-it-is-loaded)
+  var scriptElMathJax = document.createElement('script');
+  scriptElMathJax.type = 'text/x-mathjax-config';
+  scriptElMathJax.innerHTML = 'MathJax.Hub.Config({ tex2jax: { inlineMath: [[\'$\',\'$\']], displayMath: [ [\'$$\',\'$$\']], processEscapes: true } });';
+  document.body.appendChild(scriptElMathJax);
 
+  // Import MathJax if strapdown.js was loaded with a URL query containing "&mathjax=y" somewhere.
+  if ( queryOrigin['mathjax'] ) {
+    var scriptElMathJax = document.createElement('script');
+    scriptElMathJax.type = 'text/javascript';
+    scriptElMathJax.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML&amp;locale=fr';
+    document.head.appendChild(scriptElMathJax);
+  }
+
+
+  // Import ga-beacon auto web request, if strapdown.js was loaded with a URL query containing "&beacon=y" somewhere.
+  if ( queryOrigin['beacon'] ) {
+    var linkEl = document.createElement('img');
+    linkEl.alt = 'GA|Analytics';
+    linkEl.style = 'visibility: hidden; display: none;';
+    linkEl.src = 'https://perso.crans.org/besson/beacon/14/query/strapdown.js?pixel'; /* https://ga-beacon.appspot.com/UA-38514290-14 */
+    document.body.appendChild(linkEl);
+  }
+
+})(window, document);
+// End of strapdown.js
