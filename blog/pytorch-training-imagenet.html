@@ -3,16 +3,22 @@
 <title>Training ImageNet using PyTorch, step by step</title>
 
 <xmp  theme="journal" style="display:none;">
+###
+
+The note serves as my memorandum. But you can think that this is a preliminary note for training ResNet on the ImageNet dataset using PyTorch.
+
 ### Introduction
 
 Nowadays, deep learning gets remarkable result in image classification, sentimental analysis and etc.
-There are several deep learning frameworks developing for research or industry engineering. PyTorch is a productive and flexible framework for deep learning, especially for the research purpose. PyTorch provides a variety of pretrained models, including VGG, ResNet series and etc. You should have heard of that these models are trained on the ImageNet dataset, more specifically, the ILSVRC (ImageNet Large Scale Visual Recognition Competition) dataset for classification.
+There are several deep learning frameworks developing for research or industry engineering. PyTorch is a productive and flexible framework for deep learning, especially for the research purpose. PyTorch provides a variety of pretrained models, including VGG, ResNet series, etc. You should have heard of that these models are trained on the ImageNet dataset, more specifically, the ILSVRC (ImageNet Large Scale Visual Recognition Competition) dataset for classification.
 
-The ILSVRC dataset has many versions, being updated from 2012 to 2017 annually. And moreover, this dataset is not meant just for the classification task. Object detection is also a challenge out of classification. But as for us, the ImageNet dataset usually refer to the classification subset of the ILSVRC dataset.
+The ILSVRC dataset has many versions, being updated from 2012 to 2017 annually. And moreover, this dataset is not meant just for the classification task. Object detection is also a challenge out of classification. But as for us, the ImageNet dataset usually refers to the 1k-classification subset of the ILSVRC dataset.
+Basically, the ImageNet has 1000 categories of visual objects, a little bit fine-grained. Some categories, "lynx", "leoparde" and "jaguar", are even hard for human to tell apart without delving into zoos, ..maybe.
 
+Training ConvNets on the ImageNet isn't a thing like training one on MNIST or CIFAR-10 (somewhat, "toy" datasets, IMO).
 ### Data Preparation
 
-You should have a disk with __300G+__ availiable spaces to download and extract the ImageNet. __SSDs__ are recommended because of their faster speed (which we'll review later).
+You should have a disk with __300G__+ availiable space to download and extract the ImageNet. __SSD__s are recommended because of their faster speed (which we'll review later).
 </xmp>
 
 <script src="../v/0.2/strapdown.js"></script>
