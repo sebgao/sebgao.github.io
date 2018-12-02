@@ -474,7 +474,7 @@ var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':re
     // See https://github.com/chuckhoupt/strapdown/commit/1a090729fb717059be0689aa65025de6de67b3cd
   });
   // Generate Markdown
-  var html = marked(markdown);
+  var html = "<div id=\"sebcontent\">" + marked(markdown) + "</div>";
   document.getElementById('content').innerHTML = html;
 
   // Prettify
