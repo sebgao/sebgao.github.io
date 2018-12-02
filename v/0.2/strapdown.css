@@ -93,6 +93,5 @@ li.L7,
 li.L9 { background: #eee }
 
 #sebcontent{
-  width: 60%;
-  min-width: 600px;
+  max-width: 600pt;
 }
