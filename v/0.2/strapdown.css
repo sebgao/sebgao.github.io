@@ -6,7 +6,7 @@ body {
   padding-top: 60px;
   padding-bottom: 40px;
   font-size: 14px;
-  line-height: 160%;
+  line-height: 130%;
 }
 
 xmp, textarea {
@@ -15,6 +15,17 @@ xmp, textarea {
 
 h1,h2,h3,h4 {
   margin: 15px 0;
+}
+
+h5{
+    line-height: 1.0;
+    color: #600;
+}
+h6{
+    line-height: 0.3;
+    color: #444;
+    font-size: 80%;
+    font-weight: 400!important;
 }
 
 pre {
