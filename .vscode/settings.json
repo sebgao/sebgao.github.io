@@ -1,5 +1,6 @@
 {
     "html.format.enable": false,
     "workbench.colorTheme": "Default Light+",
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "editor.formatOnSave": false
 }
