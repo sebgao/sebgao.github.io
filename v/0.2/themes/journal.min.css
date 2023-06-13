@@ -8,7 +8,7 @@
     font-weight: normal;
     src: url("/cascadia.ttf");
 } */
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400');
+@import url('https://fonts.googleapis.com/css?family=Hind:400,600');
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
 audio:not([controls]){display:none;}
@@ -31,7 +31,7 @@ textarea{overflow:auto;vertical-align:top;}
 .clearfix:after{clear:both;}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
 .input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-body{margin:0;font-family:"IBM Plex Sans","Helvetica Neue","Montserrat","Times New Roman",Times,serif;font-size:14px; font-weight:400;line-height:15px;color:#1a1a1a;background-color:#ffffff;}
+body{margin:0;font-family:"Hind","Helvetica Neue","Montserrat","Times New Roman",Times,serif;font-size:14px; font-weight:400;line-height:15px;color:#1a1a1a;background-color:#ffffff;}
 a{color:#666666;text-decoration:none;}
 a:hover{color:#111111;text-decoration:underline;}
 .img-rounded{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}
@@ -122,7 +122,7 @@ cite{font-style:normal;}
 .text-error{color:#b94a48;}
 .text-info{color:#3a87ad;}
 .text-success{color:#468847;}
-h1,h2,h3,h4,h5,h6{margin:10px 0;font-family:"Helvetica Neue","Montserrat","Noto Sans SC","Arial Narrow Bold",sans-serif;font-weight:700;line-height:1;color:#000000;text-rendering:optimizelegibility;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-weight:normal;line-height:1;color:#bbbbbb;}
+h1,h2,h3,h4,h5,h6{margin:10px 0;font-family:"Hind","Montserrat","Noto Sans SC","Arial Narrow Bold",sans-serif;font-weight:600;line-height:1;color:#000000;text-rendering:optimizelegibility;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-weight:normal;line-height:1;color:#bbbbbb;}
 h1{font-size:36px;line-height:40px;}
 h2{font-size:30px;line-height:40px;}
 h3{font-size: 24px;line-height: 40px;}
