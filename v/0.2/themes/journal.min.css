@@ -31,7 +31,7 @@ textarea{overflow:auto;vertical-align:top;}
 .clearfix:after{clear:both;}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
 .input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-body{margin:0;font-family:-apple-system, "system-ui", "DM Sans","Helvetica Neue","Montserrat","Times New Roman",Times,serif;font-size:15px; font-weight:400;line-height:15px;color:#1a1a1a;background-color:#ffffff;}
+body{margin:0;font-family:"Helvetica Neue","Helvetica","Arial",-apple-system, "system-ui","Montserrat","Times New Roman",Times,serif;font-size:15px; font-weight:400;line-height:15px;color:#1a1a1a;background-color:#ffffff;}
 a{color:#666666;text-decoration:none;}
 a:hover{color:#111111;text-decoration:underline;}
 .img-rounded{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}
