@@ -8,7 +8,7 @@
     font-weight: normal;
     src: url("/cascadia.ttf");
 } */
-@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,600');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
 audio:not([controls]){display:none;}
