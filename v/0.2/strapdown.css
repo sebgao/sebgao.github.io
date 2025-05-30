@@ -5,9 +5,9 @@ This chunk is to fix Bootstrap so that the Markdown output looks good
 body {
   padding-top: 60px;
   padding-bottom: 40px;
-  font-size: 12pt;
+  font-size: 14px;
   line-height: 130%;
-  color: #333;
+  color: #090909;
 }
 
 xmp, textarea {

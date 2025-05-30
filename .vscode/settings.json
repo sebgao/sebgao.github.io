@@ -2,5 +2,6 @@
     "html.format.enable": false,
     "workbench.colorTheme": "Default Light+",
     "liveServer.settings.port": 5501,
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "makefile.configureOnOpen": false
 }
